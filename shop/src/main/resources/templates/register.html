@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登録フォーム</title>
+
+    <style>
+        .error-box {
+            border: 1px solid red;
+            background-color: #fff0f0;
+        }
+        .error-message {
+            color: orange;
+            font-size: 14px;
+            margin: 4px 0 0 4px;
+        }
+        .form-item {
+            margin-bottom: 25px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h2>会員登録</h2>
+
+<form action="/register" method="post" th:object="${registerForm}">
+
+    <!-- USER ID -->
+    <div class="form-item">
+        <label>ユーザーID ※</label>
+        <input type="number"
+               th:field="*{userId}"
+               th:classappend="${#fields.hasErrors('userId')} ? 'error-box' : ''">
+        <p class="error-message"
+           th:if="${#fields.hasErrors('userId')}"
+           th:errors="*{userId}"></p>
+    </div>
+
+    <!-- EMAIL -->
+    <div class="form-item">
+        <label>メールアドレス ※</label>
+        <input type="text"
+               th:field="*{email}"
+               th:classappend="${#fields.hasErrors('email')} ? 'error-box' : ''">
+        <p class="error-message"
+           th:if="${#fields.hasErrors('email')}"
+           th:errors="*{email}"></p>
+    </div>
+
+    <!-- EMAIL CONFIRM -->
+    <div class="form-item">
+        <label>メールアドレス（確認用）※</label>
+        <input type="text"
+               th:field="*{emailConfirm}"
+               th:classappend="${#fields.hasErrors('emailConfirm')} ? 'error-box' : ''">
+        <p class="error-message"
+           th:if="${#fields.hasErrors('emailConfirm')}"
+           th:errors="*{emailConfirm}"></p>
+    </div>
+
+    <!-- PASSWORD -->
+    <div class="form-item">
+        <label>パスワード ※</label>
+        <input type="password"
+               th:field="*{password}"
+               th:classappend="${#fields.hasErrors('password')} ? 'error-box' : ''">
+        <p class="error-message"
+           th:if="${#fields.hasErrors('password')}"
+           th:errors="*{password}"></p>
+    </div>
+
+    <!-- PASSWORD CONFIRM -->
+    <div class="form-item">
+        <label>パスワード（確認用）※</label>
+        <input type="password"
+               th:field="*{passwordConfirm}"
+               th:classappend="${#fields.hasErrors('passwordConfirm')} ? 'error-box' : ''">
+        <p class="error-message"
+           th:if="${#fields.hasErrors('passwordConfirm')}"
+           th:errors="*{passwordConfirm}"></p>
+    </div>
+
+    <!-- ZIP -->
+    <div class="form-item">
+        <label>郵便番号 ※</label>
+        <input type="text"
+               th:field="*{zip}"
+               th:classappend="${#fields.hasErrors('zip')} ? 'error-box' : ''">
+        <p class="error-message"
+           th:if="${#fields.hasErrors('zip')}"
+           th:errors="*{zip}"></p>
+    </div>
+
+    <button type="submit">登録する</button>
+
+</form>
+
+</body>
+</html>

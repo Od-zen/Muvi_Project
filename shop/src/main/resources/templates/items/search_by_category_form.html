@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>カテゴリ検索</title>
+</head>
+<body>
+
+<h2>カテゴリIDで検索</h2>
+
+<form action="/items/searchByCategoryIdForm" method="get">
+    カテゴリID:
+    <input type="number" name="categoryId">
+    <button type="submit">検索</button>
+</form>
+
+</body>
+</html>

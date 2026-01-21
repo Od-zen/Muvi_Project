@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ホーム</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .menu {
+            margin-top: 30px;
+        }
+        .menu a {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>ようこそ！</h1>
+
+<h3>メニュー</h3>
+
+<div class="menu">
+    <!-- 外部参照の全件検索 -->
+    <a href="/items/findAll">外部参照：商品一覧ページ</a>
+    <a href="/items/searchForm">外部参照:カテゴリIDで検索</a>
+    <a href="/items/searchByCategoryId/1">カテゴリID=1 の商品検索</a>
+    <a href="/items/searchByCategoryId/2">カテゴリID=2 の商品検索</a>
+    <a href="/items/searchByCategoryId/3">カテゴリID=3 の商品検索</a>
+    <a href="/items/searchByCategoryNameForm">外部参照：カテゴリ名で検索</a>
+    <a href="/items/searchByPriceForm">外部参照：価格で検索</a>
+    <a href="/items/jpql/form">JPQL①：商品ID検索</a>
+    <a href="/items/searchWithQuery/1">JPQL②：@QueryでID検索</a>
+</div>
+
+</body>
+</html>

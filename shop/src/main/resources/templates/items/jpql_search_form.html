@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>JPQL検索</title>
+</head>
+<body>
+
+<h2>JPQLで商品ID検索</h2>
+
+<form action="/items/jpql/findById" method="get">
+    商品ID：
+    <input type="number" name="id">
+    <button type="submit">検索</button>
+</form>
+
+</body>
+</html>
