@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Shop - Home</title>
+    <title>Welcome to Video Shop</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <style>
         .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 4rem 2rem;
+            padding: 4rem 0;
             text-align: center;
             border-radius: 1rem;
             margin: 2rem 0;
@@ -18,13 +18,12 @@
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
         
         .hero p {
             font-size: 1.5rem;
             margin-bottom: 2rem;
-            opacity: 0.95;
+            opacity: 0.9;
         }
         
         .hero-buttons {
@@ -43,11 +42,10 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
         .hero-btn:hover {
-            transform: translateY(-4px);
+            transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
         
@@ -64,12 +62,6 @@
             background: white;
             border-radius: 1rem;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .feature:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
         
         .feature-icon {
@@ -90,7 +82,6 @@
             padding: 2rem;
             border-radius: 1rem;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
         .stat-number {
@@ -101,51 +92,7 @@
         
         .stat-label {
             font-size: 1rem;
-            opacity: 0.95;
-        }
-        
-        .menu-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin: 2rem 0;
-        }
-        
-        .menu-section h3 {
-            color: var(--gray-900);
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 0.5rem;
-        }
-        
-        .menu-links {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1rem;
-        }
-        
-        .menu-link {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            background: var(--gray-50);
-            border-radius: 0.5rem;
-            text-decoration: none;
-            color: var(--gray-900);
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        
-        .menu-link:hover {
-            background: white;
-            border-color: var(--primary);
-            transform: translateX(4px);
-        }
-        
-        .menu-icon {
-            font-size: 1.5rem;
+            opacity: 0.9;
         }
     </style>
 </head>
@@ -168,7 +115,7 @@
     <!-- Hero Section -->
     <div class="container">
         <div class="hero">
-            <h1>🎬 Welcome to Video Shop!</h1>
+            <h1>🎬 Welcome to Video Shop</h1>
             <p>Your ultimate destination for premium movie collection</p>
             <div class="hero-buttons">
                 <a th:href="@{/videos}" class="hero-btn">Browse All Videos</a>
@@ -223,65 +170,10 @@
             </div>
         </div>
 
-        <!-- All Navigation Links -->
-        <div class="menu-section">
-            <h3>📋 All Available Pages</h3>
-            <div class="menu-links">
-                <!-- Main Pages -->
-                <a th:href="@{/videos}" class="menu-link">
-                    <span class="menu-icon">🎬</span>
-                    <span>All Videos - Complete Catalog</span>
-                </a>
-                
-                <!-- Category Search -->
-                <a th:href="@{/videos/search/category/form}" class="menu-link">
-                    <span class="menu-icon">📂</span>
-                    <span>Search by Category (Form)</span>
-                </a>
-                
-                <a th:href="@{/videos/category/1}" class="menu-link">
-                    <span class="menu-icon">🎯</span>
-                    <span>Action Movies (Category ID=1)</span>
-                </a>
-                
-                <a th:href="@{/videos/category/2}" class="menu-link">
-                    <span class="menu-icon">😄</span>
-                    <span>Comedy Movies (Category ID=2)</span>
-                </a>
-                
-                <a th:href="@{/videos/category/3}" class="menu-link">
-                    <span class="menu-icon">🎭</span>
-                    <span>Drama Movies (Category ID=3)</span>
-                </a>
-                
-                <a th:href="@{/videos/category/4}" class="menu-link">
-                    <span class="menu-icon">🚀</span>
-                    <span>SciFi Movies (Category ID=4)</span>
-                </a>
-                
-                <!-- Price Search -->
-                <a th:href="@{/videos/search/price/form}" class="menu-link">
-                    <span class="menu-icon">💰</span>
-                    <span>Search by Price (Form)</span>
-                </a>
-                
-                <!-- JPQL Search -->
-                <a th:href="@{/videos/jpql/form}" class="menu-link">
-                    <span class="menu-icon">🔍</span>
-                    <span>JPQL Search - Find by ID</span>
-                </a>
-                
-                <a th:href="@{/videos/search/1}" class="menu-link">
-                    <span class="menu-icon">🎬</span>
-                    <span>@Query Example - Search ID=1</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- Quick Search -->
+        <!-- Quick Actions -->
         <div class="search-form-container" style="text-align: center;">
-            <h2>🔍 Quick Price Search</h2>
-            <p class="form-description">Find your perfect video by budget</p>
+            <h2>Quick Search</h2>
+            <p class="form-description">Find your perfect video</p>
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
                 <a th:href="@{/videos/search/price/max(price=1000)}" class="btn btn-secondary">Under ¥1,000</a>
                 <a th:href="@{/videos/search/price/range(min=1000,max=2000)}" class="btn btn-secondary">¥1,000 - ¥2,000</a>

@@ -2,17 +2,74 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>JPQL検索</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Search - Video Shop</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a th:href="@{/videos}">🎬 Video Shop</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a th:href="@{/videos}">All Videos</a></li>
+                <li><a th:href="@{/videos/search/category/form}">By Category</a></li>
+                <li><a th:href="@{/videos/search/price/form}">By Price</a></li>
+                <li><a th:href="@{/videos/jpql/form}" class="active">Advanced Search</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<h2>JPQLで商品ID検索</h2>
+    <!-- Main Content -->
+    <div class="container">
+        <header class="page-header">
+            <h1>Advanced Search</h1>
+            <p class="subtitle">Search using JPQL Named Queries</p>
+        </header>
 
-<form action="/items/jpql/findById" method="get">
-    商品ID：
-    <input type="number" name="id">
-    <button type="submit">検索</button>
-</form>
+        <div class="search-form-container advanced-search">
+            <div class="info-box">
+                <h3>ℹ️ About JPQL Search</h3>
+                <p>This search uses JPQL (Java Persistence Query Language) Named Queries to retrieve videos by ID.</p>
+                <p>It demonstrates advanced database query techniques in Spring Data JPA.</p>
+            </div>
 
+            <h2>Search by Video ID</h2>
+            <form th:action="@{/videos/jpql/search}" method="get" class="search-form">
+                <div class="form-group">
+                    <label for="id">Video ID:</label>
+                    <input type="number" id="id" name="id" 
+                           min="1" placeholder="Enter video ID (1-14)" required>
+                    <small>Available IDs: 1-14</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Search with JPQL</button>
+            </form>
+
+            <!-- Quick Links -->
+            <div class="quick-search-links">
+                <h3>Quick Search Examples:</h3>
+                <div class="example-links">
+                    <a th:href="@{/videos/jpql/search(id=1)}" class="example-link">
+                        <span>🎬</span> ID 1: The Matrix
+                    </a>
+                    <a th:href="@{/videos/jpql/search(id=8)}" class="example-link">
+                        <span>🚀</span> ID 8: Interstellar
+                    </a>
+                    <a th:href="@{/videos/jpql/search(id=6)}" class="example-link">
+                        <span>🎭</span> ID 6: The Shawshank Redemption
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Video Shop. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>

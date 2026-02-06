@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search by Price - Video Shop</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a th:href="@{/videos}">🎬 Video Shop</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a th:href="@{/videos}">All Videos</a></li>
+                <li><a th:href="@{/videos/search/category/form}">By Category</a></li>
+                <li><a th:href="@{/videos/search/price/form}" class="active">By Price</a></li>
+                <li><a th:href="@{/videos/jpql/form}">Advanced Search</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <header class="page-header">
+            <h1>Search by Price</h1>
+            <p class="subtitle">Find videos within your budget</p>
+        </header>
+
+        <!-- Price Range Quick Links -->
+        <div class="price-quick-links">
+            <a th:href="@{/videos/search/price/max(price=1000)}" class="price-link">
+                <span class="price-icon">💰</span>
+                <span>Under ¥1,000</span>
+            </a>
+            <a th:href="@{/videos/search/price/range(min=1000,max=1500)}" class="price-link">
+                <span class="price-icon">💵</span>
+                <span>¥1,000 - ¥1,500</span>
+            </a>
+            <a th:href="@{/videos/search/price/range(min=1500,max=2000)}" class="price-link">
+                <span class="price-icon">💴</span>
+                <span>¥1,500 - ¥2,000</span>
+            </a>
+            <a th:href="@{/videos/search/price/min(price=2000)}" class="price-link">
+                <span class="price-icon">💎</span>
+                <span>Over ¥2,000</span>
+            </a>
+        </div>
+
+        <!-- Search Forms -->
+        <div class="search-forms-grid">
+            <!-- Minimum Price -->
+            <div class="search-form-container">
+                <h2>Minimum Price</h2>
+                <p class="form-description">Find videos priced above a certain amount</p>
+                <form th:action="@{/videos/search/price/min}" method="get" class="search-form">
+                    <div class="form-group">
+                        <label for="minPrice">Minimum Price (¥):</label>
+                        <input type="number" id="minPrice" name="price" 
+                               min="0" step="100" placeholder="e.g., 1000" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
+
+            <!-- Maximum Price -->
+            <div class="search-form-container">
+                <h2>Maximum Price</h2>
+                <p class="form-description">Find videos priced below a certain amount</p>
+                <form th:action="@{/videos/search/price/max}" method="get" class="search-form">
+                    <div class="form-group">
+                        <label for="maxPrice">Maximum Price (¥):</label>
+                        <input type="number" id="maxPrice" name="price" 
+                               min="0" step="100" placeholder="e.g., 2000" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
+
+            <!-- Price Range -->
+            <div class="search-form-container full-width">
+                <h2>Price Range</h2>
+                <p class="form-description">Find videos within a specific price range</p>
+                <form th:action="@{/videos/search/price/range}" method="get" class="search-form range-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="minRange">From (¥):</label>
+                            <input type="number" id="minRange" name="min" 
+                                   min="0" step="100" placeholder="Min price" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="maxRange">To (¥):</label>
+                            <input type="number" id="maxRange" name="max" 
+                                   min="0" step="100" placeholder="Max price" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Search Range</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Video Shop. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

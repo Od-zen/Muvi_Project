@@ -2,17 +2,112 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>カテゴリ検索</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search by Category - Video Shop</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a th:href="@{/videos}">🎬 Video Shop</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a th:href="@{/videos}">All Videos</a></li>
+                <li><a th:href="@{/videos/search/category/form}" class="active">By Category</a></li>
+                <li><a th:href="@{/videos/search/price/form}">By Price</a></li>
+                <li><a th:href="@{/videos/jpql/form}">Advanced Search</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<h2>カテゴリIDで検索</h2>
+    <!-- Main Content -->
+    <div class="container">
+        <header class="page-header">
+            <h1>Search by Category</h1>
+            <p class="subtitle">Browse videos by genre</p>
+        </header>
 
-<form action="/items/searchByCategoryIdForm" method="get">
-    カテゴリID:
-    <input type="number" name="categoryId">
-    <button type="submit">検索</button>
-</form>
+        <!-- Category Grid -->
+        <div class="category-grid">
+            <a th:href="@{/videos/category/1}" class="category-card action">
+                <div class="category-icon">🎯</div>
+                <h3>Action</h3>
+                <p>Explosive and thrilling</p>
+            </a>
 
+            <a th:href="@{/videos/category/2}" class="category-card comedy">
+                <div class="category-icon">😄</div>
+                <h3>Comedy</h3>
+                <p>Laugh out loud</p>
+            </a>
+
+            <a th:href="@{/videos/category/3}" class="category-card drama">
+                <div class="category-icon">🎭</div>
+                <h3>Drama</h3>
+                <p>Deep and meaningful</p>
+            </a>
+
+            <a th:href="@{/videos/category/4}" class="category-card scifi">
+                <div class="category-icon">🚀</div>
+                <h3>SciFi</h3>
+                <p>Future and beyond</p>
+            </a>
+
+            <a th:href="@{/videos/category/5}" class="category-card horror">
+                <div class="category-icon">👻</div>
+                <h3>Horror</h3>
+                <p>Spine-chilling</p>
+            </a>
+
+            <a th:href="@{/videos/category/6}" class="category-card documentary">
+                <div class="category-icon">📺</div>
+                <h3>Documentary</h3>
+                <p>Real stories</p>
+            </a>
+        </div>
+
+        <!-- Search by Category ID Form -->
+        <div class="search-form-container">
+            <h2>Search by Category ID</h2>
+            <form th:action="@{/videos/search/category}" method="get" class="search-form">
+                <div class="form-group">
+                    <label for="categoryId">Category ID:</label>
+                    <input type="number" id="categoryId" name="categoryId" 
+                           min="1" max="6" placeholder="Enter 1-6" required>
+                    <small>Enter a category ID (1=Action, 2=Comedy, 3=Drama, 4=SciFi, 5=Horror, 6=Documentary)</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+
+        <!-- Search by Category Name Form -->
+        <div class="search-form-container">
+            <h2>Search by Category Name</h2>
+            <form th:action="@{/videos/search/category-name}" method="get" class="search-form">
+                <div class="form-group">
+                    <label for="categoryName">Category Name:</label>
+                    <select id="categoryName" name="categoryName" required>
+                        <option value="">-- Select Category --</option>
+                        <option value="Action">Action</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Drama">Drama</option>
+                        <option value="SciFi">SciFi</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Documentary">Documentary</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Video Shop. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>

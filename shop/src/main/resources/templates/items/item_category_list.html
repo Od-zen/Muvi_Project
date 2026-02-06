@@ -1,28 +1,81 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>商品一覧</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Shop - All Videos</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a th:href="@{/videos}">🎬 Video Shop</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a th:href="@{/videos}" class="active">All Videos</a></li>
+                <li><a th:href="@{/videos/search/category/form}">By Category</a></li>
+                <li><a th:href="@{/videos/search/price/form}">By Price</a></li>
+                <li><a th:href="@{/videos/jpql/form}">Advanced Search</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<h1>商品一覧</h1>
+    <!-- Main Content -->
+    <div class="container">
+        <header class="page-header">
+            <h1>All Videos</h1>
+            <p class="subtitle">Browse our complete collection of movies</p>
+        </header>
 
-<table border="1">
-    <tr>
-        <th>商品番号</th>
-        <th>商品名</th>
-        <th>価格</th>
-        <th>カテゴリ</th>
-    </tr>
+        <!-- Error/Success Messages -->
+        <div th:if="${message}" class="alert alert-info">
+            <span th:text="${message}"></span>
+        </div>
 
-    <tr th:each="item : ${items}">
-        <td th:text="${item.id}"></td>
-        <td th:text="${item.name}"></td>
-        <td th:text="${item.price}"></td>
-        <td th:text="${item.category.name}"></td>
-    </tr>
-</table>
+        <!-- Video Grid -->
+        <div th:if="${items != null and !items.isEmpty()}" class="video-grid">
+            <div th:each="item : ${items}" class="video-card">
+                <div class="video-image">
+                    <span class="genre-badge" th:text="${item.category.name}">Genre</span>
+                    <div class="video-placeholder">
+                        <span class="video-icon">🎬</span>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title" th:text="${item.name}">Movie Title</h3>
+                    <div class="video-meta">
+                        <span class="category-tag" th:text="${item.category.name}">Category</span>
+                        <span class="price" th:text="'¥' + ${item.price}">Price</span>
+                    </div>
+                    <div class="video-actions">
+                        <a th:href="@{/videos/search/{id}(id=${item.id})}" class="btn btn-secondary">Details</a>
+                        <a th:href="@{/videos/category/{id}(id=${item.category.id})}" class="btn btn-outline">More from <span th:text="${item.category.name}"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <!-- Empty State -->
+        <div th:if="${items == null or items.isEmpty()}" class="empty-state">
+            <div class="empty-icon">📭</div>
+            <h2>No videos found</h2>
+            <p>Try adjusting your search criteria or browse all videos</p>
+            <a th:href="@{/videos}" class="btn btn-primary">View All Videos</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Video Shop. All rights reserved.</p>
+            <p>
+                <a th:href="@{/videos}">Home</a> | 
+                <a th:href="@{/videos/search/category/form}">Categories</a> | 
+                <a th:href="@{/videos/search/price/form}">Search by Price</a>
+            </p>
+        </div>
+    </footer>
 </body>
 </html>
